@@ -1,0 +1,102 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Nunito", sans-serif;
+  color: rgb(39, 39, 39);
+}
+
+.container {
+  background-color: white;
+  height: fit-content;
+  width: 80%;
+  margin: 50px auto;
+}
+
+.container h1 {
+  font-size: 38px;
+}
+
+.row {
+  margin: 5px 0;
+  background-color: ;
+  height: 90px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.different-row {
+  margin: 5px 0;
+  background-color: ;
+  height: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.different-row label {
+  padding: 0 5px;
+}
+
+.input {
+  font-size: 20px;
+}
+
+input[type="text"],
+input[type="password"] {
+  height: 40px;
+  padding: 0 10px;
+  border: none;
+  border-bottom: 1px solid rgb(158, 158, 158);
+  transition: 0.3s ease-in-out;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border-bottom: 1px solid black;
+}
+
+.button {
+  margin: auto;
+  height: 70px;
+  width: 200px;
+  color: white;
+  border-radius: 60px;
+  border: 1px solid grey;
+  font-size: 26px;
+  font-weight: 600;
+  background: linear-gradient(
+    180deg,
+    rgba(98, 244, 101, 1) 0%,
+    rgba(61, 140, 64, 1) 100%
+  );
+}
+
+.button:hover {
+  opacity: 75%;
+  cursor: pointer;
+}
+
+.button:focus {
+  outline: none;
+}
+
+@media only screen and (min-width: 768px) {
+  body {
+    height: 96vh;
+    overflow: hidden;
+    background: linear-gradient(
+      180deg,
+      rgba(205, 204, 204, 1) 0%,
+      rgba(69, 69, 69, 1) 100%
+    );
+  }
+  .container {
+    width: 350px;
+    padding: 25px;
+    border-radius: 5px;
+    border: 1px solid rgb(71, 71, 71);
+    filter: drop-shadow(8px 8px 10px rgb(70, 69, 69));
+  }
+}
