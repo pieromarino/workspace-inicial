@@ -25,7 +25,7 @@ function showProductsList() {
     if (1 < 2) {
       htmlContentToAppend +=
         `
-      <a href="category-info.html" class="list-group-item list-group-item-action">
+      <a href="" class="list-group-item list-group-item-action">
           <div class="row">
               <div class="col-3">
                   <img src="` +
@@ -40,8 +40,8 @@ function showProductsList() {
         category.name +
         `</h4>
                       <small class="text-muted">` +
-        category.soldCount +
-        ` vendidos</small>
+        category.cost +
+        ` dolares</small>
                   </div>
                   <p class="mb-1">` +
         category.description +
