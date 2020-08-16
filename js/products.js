@@ -1,20 +1,6 @@
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-document.addEventListener("DOMContentLoaded", function (e) {
-  fetch("https://japdevdep.github.io/ecommerce-api/product/all.json")
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (myJson) {
-      let arr = [];
-      for (i = 0; i < myJson.length; i++) {
-        currentProductsArray.push(myJson[i]);
-      }
-      console.log(currentProductsArray);
-      showProductsList();
-    });
-});
 
 let currentProductsArray = [];
 
@@ -22,7 +8,7 @@ function showProductsList() {
   let htmlContentToAppend = "";
   for (let i = 0; i < currentProductsArray.length; i++) {
     let category = currentProductsArray[i];
-    if (1 < 2) {
+    if (currentProductsArray) {
       htmlContentToAppend +=
         `
       <a href="" class="list-group-item list-group-item-action">
@@ -58,7 +44,6 @@ function showProductsList() {
   document.getElementsByClassName(
     "container p-5"
   )[0].innerHTML = htmlContentToAppend;
-  console.log(htmlContentToAppend);
   changePics();
 }
 
@@ -70,3 +55,17 @@ function changePics() {
   celerio.src = "img/prod4.jpg";
   peugeot.src = "img/prod3.jpg";
 }
+
+document.addEventListener("DOMContentLoaded", function (e) {
+  fetch(PRODUCTS_URL)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (myJson) {
+      let arr = [];
+      for (i = 0; i < myJson.length; i++) {
+        currentProductsArray.push(myJson[i]);
+      }
+      showProductsList();
+    });
+});
