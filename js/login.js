@@ -1,6 +1,7 @@
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
+
 document.addEventListener("DOMContentLoaded", function (e) {
   const checkValues = () => {
     let user = document.getElementById("user").value;
@@ -9,6 +10,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
     if (user === "" || password === "") {
       alert("Ingrese los datos correctamente");
     } else {
+      if (typeof Storage !== "undefined") {
+        localStorage.setItem("username", `${user}`);
+      }
       window.location.href = "index.html";
     }
   };
