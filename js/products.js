@@ -1,14 +1,51 @@
-//Función que se ejecuta una vez que se haya lanzado el evento de
-//que el documento se encuentra cargado, es decir, se encuentran todos los
-//elementos HTML presentes.
+let list = [];
+let filteredList = list;
 
-let currentProductsArray = [];
+rangePriceMinimum = document.getElementById("rangePriceMin");
+rangePriceMaximum = document.getElementById("rangePriceMax");
+
+const sortByPriceAsc = () => {
+  filteredList.sort((a, b) => a.cost - b.cost);
+  showProductsList();
+};
+
+const sortByPriceDesc = () => {
+  filteredList.sort((a, b) => b.cost - a.cost);
+  showProductsList();
+};
+
+const sortBySoldCount = () => {
+  filteredList.sort((a, b) => b.soldCount - a.soldCount);
+  showProductsList();
+};
+
+const sortByDefinedPrice = (minPrice, maxPrice) => {
+  console.log(minPrice);
+  const filterPrices = list.filter((product) => {
+    console.log(product.cost <= maxPrice);
+    if (product.cost >= minPrice && product.cost <= maxPrice) {
+      return product;
+    } else if (product.cost >= minPrice && maxPrice === "") {
+      return product;
+    } else if (product.cost <= maxPrice && minPrice === "") {
+      return product;
+    } else {
+      return product;
+    }
+  });
+  filteredList = filterPrices;
+  showProductsList();
+};
 
 function showProductsList() {
   let htmlContentToAppend = "";
-  for (let i = 0; i < currentProductsArray.length; i++) {
-    let category = currentProductsArray[i];
-    if (currentProductsArray) {
+  document.getElementsByClassName(
+    "container p-5"
+  )[0].innerHTML = htmlContentToAppend;
+  console.log(filteredList);
+  for (let i = 0; i < filteredList.length; i++) {
+    let category = filteredList[i];
+    if (filteredList) {
       htmlContentToAppend +=
         `
       <a href="" class="list-group-item list-group-item-action">
@@ -39,12 +76,9 @@ function showProductsList() {
     }
   }
 
-  document.getElementsByClassName("alert alert-danger")[0].style.display =
-    "none";
   document.getElementsByClassName(
     "container p-5"
   )[0].innerHTML = htmlContentToAppend;
-  changePics();
 }
 
 // cambia las fotos del celerio y peugeot que estan mal
@@ -57,14 +91,16 @@ function changePics() {
 }
 
 document.addEventListener("DOMContentLoaded", function (e) {
+  document.getElementsByClassName("alert alert-danger")[0].style.display =
+    "none";
+
   fetch(PRODUCTS_URL)
     .then(function (response) {
       return response.json();
     })
     .then(function (myJson) {
-      let arr = [];
       for (i = 0; i < myJson.length; i++) {
-        currentProductsArray.push(myJson[i]);
+        list.push(myJson[i]);
       }
       showProductsList();
     });

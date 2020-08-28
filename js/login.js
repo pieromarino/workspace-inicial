@@ -7,11 +7,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
     let user = document.getElementById("user").value;
     let password = document.getElementById("password").value;
 
-    if (user === "" || password === "") {
+    if (!user || !password) {
       alert("Ingrese los datos correctamente");
     } else {
       if (typeof Storage !== "undefined") {
-        localStorage.setItem("username", `${user}`);
+        localStorage.setItem("username", user);
       }
       window.location.href = "index.html";
     }

@@ -43,12 +43,73 @@
       <h2>Productos</h2>
       <p class="lead">Veras aqui todos los productos.</p>
     </div>
+    <div class="container">
+      <div class="col text-right">
+        <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
+          <label class="btn btn-light active" onclick="sortByPriceAsc()">
+            <input
+              type="radio"
+              name="options"
+              autocomplete="off"
+              checked
+            />Menor Precio
+          </label>
+          <label class="btn btn-light" onclick="sortByPriceDesc()">
+            <input type="radio" name="options" autocomplete="off" />Mayor Precio
+          </label>
+          <label class="btn btn-light" onclick="sortBySoldCount()">
+            <input type="radio" name="options" autocomplete="off" />
+            Popularidad
+          </label>
+        </div>
+        <div class="row justify-content-end">
+          <div class="col-md-6"></div>
+          <div class="col-md-6 col-sm-12 mb-1 container">
+            <div class="row container p-0 m-0">
+              <div class="col">
+                <p class="font-weight-normal text-right my-2">Precio</p>
+              </div>
+              <div class="col">
+                <form action="post"></form>
+                <input
+                  class="form-control"
+                  type="number"
+                  placeholder="min."
+                  id="rangePriceMin"
+                />
+              </div>
+              <div class="col">
+                <input
+                  class="form-control"
+                  type="number"
+                  placeholder="máx."
+                  id="rangePriceMax"
+                />
+              </div>
+              <div class="col-3 p-0">
+                <div class="btn-group" role="group">
+                  <button
+                    type="submit"
+                    class="btn btn-light btn-block"
+                    id="rangeFilterCount"
+                    onclick="sortByDefinedPrice(rangePriceMinimum.value, rangePriceMaximum.value)"
+                  >
+                    Filtrar
+                  </button>
+                </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- NO TOCAR HTML -->
     <div class="container p-5">
       <div
         class="alert alert-danger"
         role="alert"
-        style="position: relative; width: auto; top: 0;"
+        style="position: relative; width: auto; top: 0"
       >
         <h4 class="alert-heading">¡A trabajar! :)</h4>
         <p>
