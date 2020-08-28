@@ -15,7 +15,7 @@ const sortByPriceDesc = () => {
 };
 
 const sortBySoldCount = () => {
-  filteredList.sort((a, b) => b.soldCount - a.soldCount);
+  list.sort((a, b) => b.soldCount - a.soldCount);
   showProductsList();
 };
 
@@ -28,8 +28,6 @@ const sortByDefinedPrice = (minPrice, maxPrice) => {
     } else if (product.cost >= minPrice && maxPrice === "") {
       return product;
     } else if (product.cost <= maxPrice && minPrice === "") {
-      return product;
-    } else {
       return product;
     }
   });
