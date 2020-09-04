@@ -27,11 +27,6 @@ function showImagesGallery(array) {
 }
 
 document.addEventListener("DOMContentLoaded", function (e) {
-  let productName = document.getElementById("productName");
-  let productCost = document.getElementById("productCost");
-  let productDescription = document.getElementById("productDescription");
-  let productSoldCount = document.getElementById("productSoldCount");
-
   alert.style.display = "none";
   fetch(PRODUCT_INFO_URL)
     .then(function (response) {
