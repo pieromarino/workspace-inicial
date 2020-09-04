@@ -20,9 +20,7 @@ const sortBySoldCount = () => {
 };
 
 const sortByDefinedPrice = (minPrice, maxPrice) => {
-  console.log(minPrice);
   const filterPrices = list.filter((product) => {
-    console.log(product.cost <= maxPrice);
     if (product.cost >= minPrice && product.cost <= maxPrice) {
       return product;
     } else if (product.cost >= minPrice && maxPrice === "") {
@@ -40,13 +38,12 @@ function showProductsList() {
   document.getElementsByClassName(
     "container p-5"
   )[0].innerHTML = htmlContentToAppend;
-  console.log(filteredList);
   for (let i = 0; i < filteredList.length; i++) {
     let category = filteredList[i];
     if (filteredList) {
       htmlContentToAppend +=
         `
-      <a href="" class="list-group-item list-group-item-action">
+      <a href="product-info.html" class="list-group-item list-group-item-action">
           <div class="row">
               <div class="col-3">
                   <img src="` +
