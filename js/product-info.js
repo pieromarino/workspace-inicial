@@ -26,21 +26,45 @@ function showImagesGallery(array) {
   }
 }
 
-/* function showRating(rating) {
-  let ratingId = document.getElementById("commentRating");
-  content = "";
-  moreContent = "";
-  for (i = 0; i < rating; i++) {
-    content += '<span class="fa fa-star checked"></span>';
-  }
-  for (i = 5; i > rating; i--) {
-    moreContent += '<span class="fa fa-star"></span>';
-  }
-  ratingId.innerHTML += content;
-  ratingId.innerHTML += moreContent;
-  console.log("no funca esto lpm");
+function displayComment() {
+  let commentInfoBody = document.getElementById("commentValue").value;
+  let commentInfoRating = document.getElementById("ratingValue").value;
+  let estrellaChecked = '<span class="fa fa-star checked"></span>';
+  let estrella = '<span class="fa fa-star"></span>';
+  let d = new Date();
+  console.log(commentInfoBody);
+  console.log(commentInfoRating);
+  console.log(d.getMonth());
+  let content = `<div class="list-group-item list-group-item-action">
+  <div class="row">
+      <div class="col">
+          <div class="d-flex w-100 justify-content-between">
+              <h4 class="mb-1" id="username">${localStorage.getItem(
+                "username"
+              )}</h4>
+              <small class="text-muted" id="date">${
+                d.getFullYear() +
+                "-" +
+                (d.getMonth() + 1) +
+                "-" +
+                d.getDay() +
+                " " +
+                d.getHours() +
+                ":" +
+                d.getMinutes() +
+                ":" +
+                d.getSeconds()
+              }</small>
+          </div>
+          <p class="mb-1" id="review ">${commentInfoBody}</p>
+          <div class="productRating" id="commentRating">Calificacion: ${estrellaChecked.repeat(
+            commentInfoRating
+          )}${estrella.repeat(5 - commentInfoRating)}</div>
+      </div>
+  </div>
+</div>`;
+  document.getElementById("comments").innerHTML += content;
 }
-*/
 
 document.addEventListener("DOMContentLoaded", function (e) {
   alert.style.display = "none";
@@ -69,7 +93,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
       for (i = 0; i < product.length; i++) {
         let currentComment = product[i];
         let currentRating = product[i].score;
-        let htmlcontentxD = "<strong>hola</strong>";
         let estrellaChecked = '<span class="fa fa-star checked"></span>';
         let estrella = '<span class="fa fa-star"></span>';
         content += `<div class="list-group-item list-group-item-action">
@@ -82,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
                     }</small>
                 </div>
                 <p class="mb-1" id="review ">${currentComment.description}</p>
-                <div class="productRating" id="commentRating">Rating: ${estrellaChecked.repeat(
+                <div class="productRating" id="commentRating">Calificacion: ${estrellaChecked.repeat(
                   currentRating
                 )}${estrella.repeat(5 - currentRating)}</div>
             </div>
