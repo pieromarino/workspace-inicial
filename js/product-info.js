@@ -11,12 +11,12 @@ function showImagesGallery(array) {
 
     htmlContentToAppend +=
       `
-        <div class="gallery">
-            
-                <img class="img-gallery" src="` +
+        <div class="col-lg-3 col-md-4 col-6">
+            <div class="d-block mb-4 h-100">
+                <img class="img-fluid img-thumbnail" src="` +
       imageSrc +
       `" alt="">
-            
+            </div>
         </div>
         `;
 
@@ -32,33 +32,9 @@ function displayComment() {
   let estrellaChecked = '<span class="fa fa-star checked"></span>';
   let estrella = '<span class="fa fa-star"></span>';
   let d = new Date();
-  let year = d.getFullYear();
-  let month = d.getMonth() + 1;
-  let day = d.getDay();
-  let hours = d.getHours();
-  let minutes = d.getMinutes();
-  let seconds = d.getSeconds();
-
-  if (month < 10) {
-    month = `0${d.getMonth()}`;
-  }
-
-  if (day < 10) {
-    day = `0${d.getDay()}`;
-  }
-
-  if (hours < 10) {
-    hours = `0${d.getHours()}`;
-  }
-
-  if (minutes < 10) {
-    minutes = `0${d.getMinutes()}`;
-  }
-
-  if (seconds < 10) {
-    seconds = `0${d.getSeconds()}`;
-  }
-
+  console.log(commentInfoBody);
+  console.log(commentInfoRating);
+  console.log(d.getMonth());
   let content = `<div class="list-group-item list-group-item-action">
   <div class="row">
       <div class="col">
@@ -66,18 +42,18 @@ function displayComment() {
               <h4 class="mb-1" id="username">${localStorage.getItem(
                 "username"
               )}</h4>
-              <small class="commentDate" id="date">${
-                year +
+              <small class="text-muted" id="date">${
+                d.getFullYear() +
                 "-" +
-                month +
+                (d.getMonth() + 1) +
                 "-" +
-                day +
+                d.getDay() +
                 " " +
-                hours +
+                d.getHours() +
                 ":" +
-                minutes +
+                d.getMinutes() +
                 ":" +
-                seconds
+                d.getSeconds()
               }</small>
           </div>
           <p class="mb-1" id="review ">${commentInfoBody}</p>
@@ -113,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     })
     .then(function (product) {
       let content = "";
+      console.log(product);
       for (i = 0; i < product.length; i++) {
         let currentComment = product[i];
         let currentRating = product[i].score;
@@ -123,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
             <div class="col">
                 <div class="d-flex w-100 justify-content-between">
                     <h4 class="mb-1" id="username">${currentComment.user}</h4>
-                    <small class="commentDate" id="date">${
+                    <small class="text-muted" id="date">${
                       currentComment.dateTime
                     }</small>
                 </div>
