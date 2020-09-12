@@ -29,7 +29,8 @@ function showImagesGallery(array) {
 
 function displayComment() {
   let userino = localStorage.getItem("username");
-  if (userino === null || userino === "null") {
+  let userDiv = document.getElementById("userProfile");
+  if (userino === null || userDiv.innerHTML === "null") {
     alert("Inicia sesion para poder comentar");
   } else {
     let commentInfoBody = document.getElementById("commentValue").value;
