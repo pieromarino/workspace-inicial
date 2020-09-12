@@ -82,6 +82,19 @@ input[type="password"]:focus {
   outline: none;
 }
 
+.invisible {
+  height: fit-content;
+  width: 350px;
+  margin: 50px auto;
+  font-size: 22px;
+  text-align: center;
+}
+
+.invisible a {
+  color: black;
+  text-decoration: none;
+}
+
 @media only screen and (min-width: 768px) {
   body {
     height: 96vh;
@@ -98,5 +111,8 @@ input[type="password"]:focus {
     border-radius: 5px;
     border: 1px solid rgb(71, 71, 71);
     filter: drop-shadow(8px 8px 10px rgb(70, 69, 69));
+  }
+  .invisible a {
+    color: white;
   }
 }
