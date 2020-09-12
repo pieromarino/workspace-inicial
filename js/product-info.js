@@ -30,7 +30,7 @@ function showImagesGallery(array) {
 function displayComment() {
   let userino = localStorage.getItem("username");
   if (userino === null) {
-    alert("logueate capo");
+    alert("Ingresa sesion para poder comentar");
   } else {
     let commentInfoBody = document.getElementById("commentValue").value;
     let commentInfoRating = document.getElementById("ratingValue").value;
