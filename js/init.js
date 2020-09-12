@@ -52,7 +52,15 @@ var getJSONData = function (url) {
 document.addEventListener("DOMContentLoaded", function (e) {
   document.getElementsByClassName(
     "container d-flex flex-column flex-md-row justify-content-between"
-  )[0].innerHTML += `<a class="py-2 d-none d-md-inline-block" href="">${localStorage.getItem(
+  )[0].innerHTML += `<a class="py-2 d-none d-md-inline-block" href="" id="userProfile">${localStorage.getItem(
     "username"
   )}</a>`;
+  let userino = localStorage.getItem("username");
+  if (userino === null) {
+    document.getElementById(
+      "userProfile"
+    ).innerHTML = `<a href="login.html">Iniciar sesion</a>`;
+  } else {
+    console.log(userino);
+  }
 });

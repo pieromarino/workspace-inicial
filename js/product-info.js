@@ -1,7 +1,8 @@
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-let alert = document.getElementsByClassName("alert alert-danger")[0];
+let alert1 = document.getElementsByClassName("alert alert-danger")[0];
+let relatedList = [];
 
 function showImagesGallery(array) {
   let htmlContentToAppend = "";
@@ -27,39 +28,43 @@ function showImagesGallery(array) {
 }
 
 function displayComment() {
-  let commentInfoBody = document.getElementById("commentValue").value;
-  let commentInfoRating = document.getElementById("ratingValue").value;
-  let estrellaChecked = '<span class="fa fa-star checked"></span>';
-  let estrella = '<span class="fa fa-star"></span>';
-  let d = new Date();
-  let year = d.getFullYear();
-  let month = d.getMonth() + 1;
-  let day = d.getDay();
-  let hours = d.getHours();
-  let minutes = d.getMinutes();
-  let seconds = d.getSeconds();
+  let userino = localStorage.getItem("username");
+  if (userino === null) {
+    alert("logueate capo");
+  } else {
+    let commentInfoBody = document.getElementById("commentValue").value;
+    let commentInfoRating = document.getElementById("ratingValue").value;
+    let estrellaChecked = '<span class="fa fa-star checked"></span>';
+    let estrella = '<span class="fa fa-star"></span>';
+    let d = new Date();
+    let year = d.getFullYear();
+    let month = d.getMonth() + 1;
+    let day = d.getDay();
+    let hours = d.getHours();
+    let minutes = d.getMinutes();
+    let seconds = d.getSeconds();
 
-  if (month < 10) {
-    month = `0${d.getMonth()}`;
-  }
+    if (month < 10) {
+      month = `0${d.getMonth()}`;
+    }
 
-  if (day < 10) {
-    day = `0${d.getDay()}`;
-  }
+    if (day < 10) {
+      day = `0${d.getDay()}`;
+    }
 
-  if (hours < 10) {
-    hours = `0${d.getHours()}`;
-  }
+    if (hours < 10) {
+      hours = `0${d.getHours()}`;
+    }
 
-  if (minutes < 10) {
-    minutes = `0${d.getMinutes()}`;
-  }
+    if (minutes < 10) {
+      minutes = `0${d.getMinutes()}`;
+    }
 
-  if (seconds < 10) {
-    seconds = `0${d.getSeconds()}`;
-  }
+    if (seconds < 10) {
+      seconds = `0${d.getSeconds()}`;
+    }
 
-  let content = `<div class="list-group-item list-group-item-action">
+    let content = `<div class="list-group-item list-group-item-action">
   <div class="row">
       <div class="col">
           <div class="d-flex w-100 justify-content-between">
@@ -87,11 +92,49 @@ function displayComment() {
       </div>
   </div>
 </div>`;
-  document.getElementById("comments").innerHTML += content;
+    document.getElementById("comments").innerHTML += content;
+  }
+}
+
+function showRelatedProducts(array) {
+  getJSONData(PRODUCTS_URL).then(function (resultObj) {
+    if (resultObj.status === "ok") {
+      productsList = resultObj.data;
+
+      let htmlProducts = "";
+
+      for (let i = 0; i < array.length; i++) {
+        let currentRelatedProduct = array[i];
+        let relatedProduct = productsList[currentRelatedProduct];
+
+        htmlProducts +=
+          `
+              <div class= "col-lg-3 col-md-4 col-6 border" id="relatedCard">
+                  <div id="relatedProductImg" class= "row">
+                      <img class="img-fluid p-2" src="` +
+          relatedProduct.imgSrc +
+          `">                                              
+                  </div>                   
+                  <div "relatedProductInfo" class= "row p-2">
+                  <p>` +
+          relatedProduct.name +
+          `</p> 
+                  <p>` +
+          relatedProduct.description +
+          `</p>
+                  </div>
+                  <div class= "row p-2">
+                  <a href=""><strong>Ir al producto</strong></a>
+                  </div>                     
+              </div>`;
+      }
+      document.getElementById("relatedProducts").innerHTML = htmlProducts;
+    }
+  });
 }
 
 document.addEventListener("DOMContentLoaded", function (e) {
-  alert.style.display = "none";
+  alert1.style.display = "none";
   fetch(PRODUCT_INFO_URL)
     .then(function (response) {
       return response.json();
@@ -106,6 +149,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
       productDescription.innerHTML = `${product.description}`;
       productSoldCount.innerHTML = `${product.soldCount} vendidos`;
       showImagesGallery(product.images);
+      showRelatedProducts(product.relatedProducts);
     });
   fetch(PRODUCT_INFO_COMMENTS_URL)
     .then(function (response) {
