@@ -60,7 +60,5 @@ document.addEventListener("DOMContentLoaded", function (e) {
     document.getElementById(
       "userProfile"
     ).innerHTML = `<a href="login.html">Iniciar sesion</a>`;
-  } else {
-    console.log(userino);
   }
 });

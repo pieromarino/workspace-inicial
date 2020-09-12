@@ -44,28 +44,30 @@ function displayComment() {
     let hours = d.getHours();
     let minutes = d.getMinutes();
     let seconds = d.getSeconds();
+    if (commentInfoBody === "" || commentInfoRating === "") {
+      alert("Ingrese un comentario y calificacion");
+    } else {
+      if (month < 10) {
+        month = `0${d.getMonth()}`;
+      }
 
-    if (month < 10) {
-      month = `0${d.getMonth()}`;
-    }
+      if (day < 10) {
+        day = `0${d.getDay()}`;
+      }
 
-    if (day < 10) {
-      day = `0${d.getDay()}`;
-    }
+      if (hours < 10) {
+        hours = `0${d.getHours()}`;
+      }
 
-    if (hours < 10) {
-      hours = `0${d.getHours()}`;
-    }
+      if (minutes < 10) {
+        minutes = `0${d.getMinutes()}`;
+      }
 
-    if (minutes < 10) {
-      minutes = `0${d.getMinutes()}`;
-    }
+      if (seconds < 10) {
+        seconds = `0${d.getSeconds()}`;
+      }
 
-    if (seconds < 10) {
-      seconds = `0${d.getSeconds()}`;
-    }
-
-    let content = `<div class="list-group-item list-group-item-action">
+      let content = `<div class="list-group-item list-group-item-action">
   <div class="row">
       <div class="col">
           <div class="d-flex w-100 justify-content-between">
@@ -93,7 +95,8 @@ function displayComment() {
       </div>
   </div>
 </div>`;
-    document.getElementById("comments").innerHTML += content;
+      document.getElementById("comments").innerHTML += content;
+    }
   }
 }
 
