@@ -55,6 +55,11 @@ const logOut = () => {
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
+  let mycart = document.getElementsByClassName(
+    "py-2 d-none d-md-inline-block"
+  )[4];
+  mycart.remove();
+
   let contentToAppend = `<div class="dropdown" id="userDropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     ${localStorage.getItem("username")}
