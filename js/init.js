@@ -46,19 +46,43 @@ var getJSONData = function (url) {
     });
 };
 
+const logOut = () => {
+  console.log("removing username...");
+  localStorage.removeItem("username");
+};
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
-  document.getElementsByClassName(
-    "container d-flex flex-column flex-md-row justify-content-between"
-  )[0].innerHTML += `<a class="py-2 d-none d-md-inline-block" href="" id="userProfile">${localStorage.getItem(
-    "username"
-  )}</a>`;
+  let contentToAppend = `<div class="dropdown" id="userDropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    ${localStorage.getItem("username")}
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="cart.html">Mi carrito</a>
+    <a class="dropdown-item" href="#">Perfil</a>
+    <button class="dropdown-item" href="#" id="logOutBtn">Cerrar sesion</button>
+  </div>
+</div></a>`;
+
   let userino = localStorage.getItem("username");
-  if (userino === null) {
-    document.getElementById(
-      "userProfile"
-    ).innerHTML = `<a href="login.html">Iniciar sesion</a>`;
+  let userinoID = document.getElementById("userDropdown");
+
+  const isLogin = window.location.pathname.includes("login");
+  if (!isLogin) {
+    if (userino === null || userinoID === "null") {
+      document.getElementsByClassName(
+        "container d-flex flex-column flex-md-row justify-content-between"
+      )[0].innerHTML += `<a class="py-2 d-none d-md-inline-block" href="login.html">Iniciar sesion</a>`;
+    } else {
+      document.getElementsByClassName(
+        "container d-flex flex-column flex-md-row justify-content-between"
+      )[0].innerHTML += contentToAppend;
+    }
+    document.getElementById("logOutBtn").onclick = () => {
+      logOut();
+      window.location.href = "login.html";
+    };
   }
 });

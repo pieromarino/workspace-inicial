@@ -95,20 +95,13 @@
       <div id="comments">
   
       </div>
-      <form class="form">
+      <form class="form" id="formID">
         <h5>Deja un comentario...</h5>
           <div class="form-group">
             <input type="text" class="form-control" id="commentValue">
             <br>
-            <h6>Calificacion</h6>
-            <select class="form-control form-control-sm" id="ratingValue">
-              <option selected disabled>Seleccione una opcion</option>
-              <option value="1">1 estrella</option>
-              <option value="2">2 estrellas</option>
-              <option value="3">3 estrellas</option>
-              <option value="4">4 estrellas</option>
-              <option value="5">5 estrellas</option>
-            </select>
+            <label for="ratingValue" >Calificacion (1-5)</label>
+            <input type="range" class="custom-range" min="1" max="5" step="1" id="ratingValue" value="1">
           </div>
           <button type="button" class="btn btn-primary" onclick="displayComment()"><strong>Enviar comentario</strong></button>
           </form>

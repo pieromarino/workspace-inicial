@@ -34,6 +34,10 @@ const sortByDefinedPrice = (minPrice, maxPrice) => {
 };
 
 function showProductsList() {
+  if (!filteredList.length) {
+    filteredList = list;
+  }
+  console.log(filteredList);
   let htmlContentToAppend = "";
   document.getElementsByClassName(
     "container p-5"
@@ -98,9 +102,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
       return response.json();
     })
     .then(function (myJson) {
-      for (i = 0; i < myJson.length; i++) {
-        list.push(myJson[i]);
-      }
+      console.log(myJson);
+      list = myJson;
       showProductsList();
     });
 });

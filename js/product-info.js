@@ -29,7 +29,7 @@ function showImagesGallery(array) {
 
 function displayComment() {
   let userino = localStorage.getItem("username");
-  let userDiv = document.getElementById("userProfile");
+  let userDiv = document.getElementById("dropdownMenuButton");
   if (userino === null || userDiv.innerHTML === "null") {
     alert("Inicia sesion para poder comentar");
   } else {
@@ -98,6 +98,7 @@ function displayComment() {
       document.getElementById("comments").innerHTML += content;
     }
   }
+  document.getElementById("formID").reset();
 }
 
 function showRelatedProducts(array) {
