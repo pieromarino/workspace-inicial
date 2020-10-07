@@ -3,15 +3,14 @@
 <html lang="en">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
   <title>eMercado - Todo lo que busques está aquí</title>
 
-  <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/" />
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
   <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -27,10 +26,28 @@
         font-size: 3.5rem;
       }
     }
+
+    .currency-button {
+      border: 1px solid #dd2f56;
+      border-radius: 5px;
+      padding: 10px;
+      margin: 5px;
+      color: #dd2f56;
+      transition: 0.15s ease-in;
+    }
+
+    .currency-button:hover {
+      background-color: #dd2f56;
+      color: white
+    }
+
+    .currency-button:focus {
+      outline: none;
+    }
   </style>
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
-  <link href="css/dropzone.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+  <link href="css/styles.css" rel="stylesheet" />
+  <link href="css/dropzone.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -44,12 +61,38 @@
     </div>
   </nav>
   <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 11/10/2020) y Entrega 6 (Fecha de entrega: 25/10/2020).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+    <h1 class="text-center p-2">Carrito</h1>
+    <table class="table table-hover">
+      <thead id="tr">
+        <tr>
+          <th></th>
+          <th>Nombre</th>
+          <th>Costo</th>
+          <th>Cantidad</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+    <div class="d-flex" style="justify-content: space-around;" id="btnDiv">
+      <h2>Check out</h2>
     </div>
+
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Subtotal:</th>
+          <th scope="col" id="subtotal-price"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Total:</th>
+          <th id="total-price"></th>
+        </tr>
+      </tbody>
+    </table>
   </div>
   <div id="spinner-wrapper">
     <div class="lds-ring">
