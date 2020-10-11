@@ -24,7 +24,7 @@ const showTotal = () => {
     curr != "USD" ? num = num / 40 : num = num;
     return num
   })
-  //sumo los resultados de el array creado anteriormente
+  //sumo los todos los elementos en el array creado anteriormente
   let result = arr.reduce((a, b) => a + b)
   //actualizo el contenido de los elementos
   subtotal.innerHTML = `${result} USD`;
@@ -67,8 +67,6 @@ btn.type = "button";
 btn.className = "currency-button"
 btn.onclick = changeCurrency
 btn.innerHTML = "Ver en UYU"
-//btn.style.color = "#dd2f56"
-//btn.style.borderColor = "#dd2f56"
 btnDiv.append(btn)
 
 document.addEventListener("DOMContentLoaded", (e) => {
@@ -93,7 +91,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
         input.className = "form-control";
         input.value = article.count;
         input.id = `row-${index}`;
-        input.onclick = () => { showSubtotal(index) };
+        input.onchange = () => { showSubtotal(index) };
 
         //assigno valores/propiedades para cada uno de los elementos
         img.innerHTML = `<img src="${article.src}" width="100px">`;
