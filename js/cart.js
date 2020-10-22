@@ -10,9 +10,20 @@ const tr = document.getElementById("tr");
 const btnDiv = document.getElementById("btnDiv")
 const currencyBtn = document.getElementById("currencyBtn")
 const modalDiv = document.getElementById("modal-btn-div")
+const modalBody = document.getElementsByClassName("modal-body")[0]
+const accordion = document.getElementById("accordion")
 const radio = document.getElementsByName("radios");
 const form = document.getElementById("shipments")
 const shipmentCost = document.getElementById("shipmentCost")
+const modal = document.getElementsByClassName("modal-header")[0]
+const accordionVisa = document.getElementById("accordionVisa")
+const accordionMaster = document.getElementById("accordionMaster")
+const accordionPaypal = document.getElementById("accordionPaypal")
+const visaBody = document.getElementById("visaBody")
+const masterBody = document.getElementById("masterBody")
+const paypalBody = document.getElementById("paypalBody")
+
+
 
 //funcion para mostrar el total
 const showTotal = () => {
@@ -93,6 +104,49 @@ checkOutBtn.innerHTML = "Métodos de pago"
 checkOutBtn.setAttribute("data-toggle", "modal")
 checkOutBtn.setAttribute("data-target", "#paymentModal")
 modalDiv.append(checkOutBtn)
+
+const makePayment = () => {
+    accordion.style.display = "none"
+    modalBody.innerHTML = `
+    <div class="alert-success rounded" role="alert">
+  <h4 class="alert-heading p-2">Su pago se ha realizado con exito</h4>
+  <p class="p-2">Se ha enviado un correo electronico a su cuenta con la informacion de su compra</p>
+</div>`
+document.getElementById("cartBody").style.display = "none"
+document.getElementsByClassName("container p-5")[0].innerHTML = `
+
+<h1 class="display-4">Parece que no hay nada en tu carrito :(</h1>
+<p class="lead">
+  <a class="btn btn-primary btn-lg mt-8" href="./cart.html" role="button">Actualizar la pagina</a>
+</p>
+`
+}
+
+const payBtn = document.createElement("button")
+payBtn.type = "button"
+payBtn.className = "btn btn-primary btn-lg btn-block mt-3"
+payBtn.innerHTML = "Pagar"
+payBtn.onclick = makePayment
+
+
+
+const appendBtnVisa = () => {
+    visaBody.append(payBtn)
+}
+
+const appendBtnMaster = () => {
+    masterBody.append(payBtn)
+}
+
+const appendBtnPaypal = () => {
+    paypalBody.append(payBtn)
+
+}
+
+accordionVisa.onclick = appendBtnVisa
+accordionMaster.onclick = appendBtnMaster
+accordionPaypal.onclick = appendBtnPaypal
+
 
 const getValue = () => {
     for (i = 0; i < radio.length; i++) {

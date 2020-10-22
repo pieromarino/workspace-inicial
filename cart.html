@@ -1,203 +1,317 @@
 <!DOCTYPE html>
 <!-- saved from url=(0049)https://getbootstrap.com/docs/4.3/examples/album/ -->
 <html lang="en">
-
-<head>
+  <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
     <meta name="description" content="" />
     <title>eMercado - Todo lo que busques está aquí</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/" />
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
+    <link
+      rel="canonical"
+      href="https://getbootstrap.com/docs/4.3/examples/album/"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./css/cart.css" />
 
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
     <link href="css/dropzone.css" rel="stylesheet" />
-</head>
+  </head>
 
-<body>
+  <body>
     <nav class="site-header sticky-top py-1 bg-dark">
-        <div class="container d-flex flex-column flex-md-row justify-content-between">
-            <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a>
-            <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a
+      <div
+        class="container d-flex flex-column flex-md-row justify-content-between"
+      >
+        <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a>
+        <a class="py-2 d-none d-md-inline-block" href="categories.html"
+          >Categorías</a
         >
         <a class="py-2 d-none d-md-inline-block" href="products.html"
           >Productos</a
         >
         <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-            <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-        </div>
+        <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
+      </div>
     </nav>
     <div class="container p-5">
-        <div id="cartBody">
-            <h1 class="text-center p-2">Carrito</h1>
-            <table class="table table-hover">
-                <thead id="tr">
-                    <tr>
-                        <th></th>
-                        <th>Nombre</th>
-                        <th>Costo</th>
-                        <th>Cantidad</th>
-                        <th>Subtotal</th>
-                        <th style="width: 45px;"></th>
-                    </tr>
-                </thead>
-                <tbody id="tableBody"></tbody>
-            </table>
-            <div class="d-flex" style="justify-content: space-around" id="btnDiv">
-                <h2>Check out</h2>
-            </div>
-
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th scope="col">Subtotal:</th>
-                        <th scope="col" id="subtotal-price"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th>
-                            Envios:
-                            <form id="shipments">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="radios" id="Radios1" value="0.05" checked />
-                                    <label class="form-check-label" for="Radios1">
-                    Standard (12 a 15 días) - +5% del Subtotal
-                  </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="radios" id="Radios2" value="0.07" />
-                                    <label class="form-check-label" for="Radios2">
-                    Express (5 a 8 días) - +7% del Subtotal
-                  </label>
-                                </div>
-                                <div class="form-check disabled">
-                                    <input class="form-check-input" type="radio" name="radios" id="Radios3" value="0.15" />
-                                    <label class="form-check-label" for="Radios3">
-                    Premium (2 a 5 días) - +15% del Subtotal
-                  </label>
-                                </div>
-                            </form>
-                        </th>
-                        <th id="shipmentCost"></th>
-                    </tr>
-                    <tr>
-                        <th>Total:</th>
-                        <th id="total-price"></th>
-                    </tr>
-                </tbody>
-            </table>
-            <div id="modal-btn-div"></div>
+      <div id="cartBody">
+        <h1 class="text-center p-2">Carrito</h1>
+        <table class="table table-hover">
+          <thead id="tr">
+            <tr>
+              <th></th>
+              <th>Nombre</th>
+              <th>Costo</th>
+              <th>Cantidad</th>
+              <th>Subtotal</th>
+              <th style="width: 45px"></th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+        <div class="d-flex" style="justify-content: space-around" id="btnDiv">
+          <h2>Check out</h2>
         </div>
+
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Subtotal:</th>
+              <th scope="col" id="subtotal-price"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>
+                Envios:
+                <form id="shipments">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="radios"
+                      id="Radios1"
+                      value="0.05"
+                      checked
+                    />
+                    <label class="form-check-label" for="Radios1">
+                      Standard (12 a 15 días) - +5% del Subtotal
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="radios"
+                      id="Radios2"
+                      value="0.07"
+                    />
+                    <label class="form-check-label" for="Radios2">
+                      Express (5 a 8 días) - +7% del Subtotal
+                    </label>
+                  </div>
+                  <div class="form-check disabled">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="radios"
+                      id="Radios3"
+                      value="0.15"
+                    />
+                    <label class="form-check-label" for="Radios3">
+                      Premium (2 a 5 días) - +15% del Subtotal
+                    </label>
+                  </div>
+                </form>
+              </th>
+              <th id="shipmentCost"></th>
+            </tr>
+            <tr>
+              <th>Total:</th>
+              <th id="total-price"></th>
+            </tr>
+          </tbody>
+        </table>
+        <div id="modal-btn-div"></div>
+      </div>
     </div>
     <div id="spinner-wrapper">
-        <div class="lds-ring">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
-    <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="ModalLabel">Elige tu forma de pago</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body w-100">
-                    <div id="accordion">
-                        <div class="card">
-                            <div class="card-header" id="visa">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+    <div
+      class="modal fade"
+      id="paymentModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="ModalLabel">Elige tu forma de pago</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body w-100">
+            <div id="accordion">
+              <div class="card">
+                <div class="card-header" id="visa">
+                  <h5 class="mb-0">
+                    <button
+                      class="btn btn-link"
+                      data-toggle="collapse"
+                      data-target="#collapseOne"
+                      aria-expanded="true"
+                      aria-controls="collapseOne"
+                      id="accordionVisa"
+                    >
                       Visa
                     </button>
-                                </h5>
-                            </div>
+                  </h5>
+                </div>
 
-                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                                <div class="card-body">
-                                    <div>
-                                        <label for="cardNum">Número de la tarjeta</label>
-                                        <input type="text" class="form-control" id="cardNum" placeholder="XXXX XXXX XXXX XXXX">
-                                    </div>
-                                    <div class="d-flex justify-content-between">
-                                        <div class="form-group w-40">
-                                            <label for="cardExp">Vence</label>
-                                            <input type="text" class="form-control" id="cardExp" placeholder="MM/AAAA">
-                                        </div>
-                                        <div class="form-group w-40">
-                                            <label for="cardCVV">CVV</label>
-                                            <input type="text" class="form-control" id="cardCVV" placeholder="XXX">
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <label for="cardName">Nombre y apellido</label>
-                                        <input type="text" class="form-control" id="cardName">
-                                    </div>
-                                    <button type="button" class="btn btn-primary btn-lg btn-block mt-3">Pagar</button>
-                                    </form>
-                                </div>
-                            </div>
+                <div
+                  id="collapseOne"
+                  class="collapse"
+                  aria-labelledby="headingOne"
+                  data-parent="#accordion"
+                >
+                  <div class="card-body" id="visaBody">
+                    <form>
+                      <div>
+                        <label for="cardNum">Número de la tarjeta</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="cardNum"
+                          placeholder="XXXX XXXX XXXX"
+                        />
+                      </div>
+                      <div class="d-flex justify-content-between">
+                        <div class="form-group w-40">
+                          <label for="cardExp">Vence</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="cardExp"
+                            placeholder="MM/AAAA"
+                          />
                         </div>
-                        <div class="card">
-                            <div class="card-header" id="master">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <div class="form-group w-40">
+                          <label for="cardCVV">CVV</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="cardCVV"
+                            placeholder="XXX"
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <label for="cardName">Nombre y apellido</label>
+                        <input type="text" class="form-control" id="cardName" />
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="master">
+                  <h5 class="mb-0">
+                    <button
+                      class="btn btn-link collapsed"
+                      data-toggle="collapse"
+                      data-target="#collapseTwo"
+                      aria-expanded="false"
+                      aria-controls="collapseTwo"
+                      id="accordionMaster"
+                    >
                       MasterCard
                     </button>
-                                </h5>
-                            </div>
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                                <div class="card-body">
-                                    <div>
-                                        <label for="cardNum1">Número de la tarjeta</label>
-                                        <input type="text" class="form-control" id="cardNum1" placeholder="XXXX XXXX XXXX XXXX">
-                                    </div>
-                                    <div class="d-flex justify-content-between">
-                                        <div class="form-group w-40">
-                                            <label for="cardExp1">Vence</label>
-                                            <input type="text" class="form-control" id="cardExp1" placeholder="MM/AAAA">
-                                        </div>
-                                        <div class="form-group w-40">
-                                            <label for="cardCVV1">CVV</label>
-                                            <input type="text" class="form-control" id="cardCVV1" placeholder="XXX">
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <label for="cardName1">Nombre y apellido</label>
-                                        <input type="text" class="form-control" id="cardName1">
-                                    </div>
-                                    <button type="button" class="btn btn-primary btn-lg btn-block mt-3">Pagar</button>
-                                    </form>
-                                </div>
-                            </div>
+                  </h5>
+                </div>
+                <div
+                  id="collapseTwo"
+                  class="collapse"
+                  aria-labelledby="headingTwo"
+                  data-parent="#accordion"
+                >
+                  <div class="card-body" id="masterBody">
+                    <form>
+                      <div id="paymeontOption1">
+                        <div>
+                          <label for="cardNum1">Número de la tarjeta</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="cardNum1"
+                            placeholder="XXXX XXXX XXXX"
+                          />
                         </div>
-                        <div class="card">
-                            <div class="card-header" id="other">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <div class="d-flex justify-content-between">
+                          <div class="form-group w-40">
+                            <label for="cardExp1">Vence</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="cardExp1"
+                              placeholder="MM/AAAA"
+                            />
+                          </div>
+                          <div class="form-group w-40">
+                            <label for="cardCVV1">CVV</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="cardCVV1"
+                              placeholder="XXX"
+                            />
+                          </div>
+                        </div>
+                        <div>
+                          <label for="cardName1">Nombre y apellido</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="cardName1"
+                          />
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="other">
+                  <h5 class="mb-0">
+                    <button
+                      class="btn btn-link collapsed"
+                      data-toggle="collapse"
+                      data-target="#collapseThree"
+                      aria-expanded="false"
+                      aria-controls="collapseThree"
+                      id="accordionPaypal"
+                    >
                       PayPal
                     </button>
-                                </h5>
-                            </div>
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                                <div class="card-body">
-                                    <label for="paypalmail">Ingrese su correo electronico</label>
-                                    <input type="email" class="form-control" id="paypalmail">
-                                    <button type="button" class="btn btn-primary btn-lg btn-block mt-3">Ir a PayPal</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                  </h5>
                 </div>
+                <div
+                  id="collapseThree"
+                  class="collapse"
+                  aria-labelledby="headingThree"
+                  data-parent="#accordion"
+                >
+                  <div class="card-body" id="paypalBody">
+                    <label for="paypalmail"
+                      >Ingrese su correo electronico</label
+                    >
+                    <input type="email" class="form-control" id="paypalmail" />
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
 
     <script src="js/jquery-3.4.1.min.js"></script>
@@ -205,6 +319,5 @@
     <script src="js/dropzone.js"></script>
     <script src="js/init.js"></script>
     <script src="js/cart.js"></script>
-</body>
-
+  </body>
 </html>
