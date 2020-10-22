@@ -110,7 +110,7 @@ const makePayment = () => {
     modalBody.innerHTML = `
     <div class="alert-success rounded" role="alert">
   <h4 class="alert-heading p-2">Su pago se ha realizado con exito</h4>
-  <p class="p-2">Se ha enviado un correo electronico a su cuenta con la informacion de su compra</p>
+  <p class="p-2">Se ha enviado un correo electronico a su cuenta con la informacion de su compra.</p>
 </div>`
 document.getElementById("cartBody").style.display = "none"
 document.getElementsByClassName("container p-5")[0].innerHTML = `
@@ -118,7 +118,7 @@ document.getElementsByClassName("container p-5")[0].innerHTML = `
 <h1 class="display-4">Parece que no hay nada en tu carrito :(</h1>
 <p class="lead">
   <a class="btn btn-primary btn-lg mt-8" href="./cart.html" role="button">Actualizar la pagina</a>
-</p>
+ </p>
 `
 }
 
