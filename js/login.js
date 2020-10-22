@@ -2,6 +2,15 @@
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 
+const logAsGuestBtn = document.getElementById("logAsGuest")
+
+const logAsGuest = () => {
+  localStorage.removeItem("username");
+  window.location.href = "index.html"
+}
+
+logAsGuestBtn.onclick = logAsGuest
+
 document.addEventListener("DOMContentLoaded", function (e) {
   const checkValues = () => {
     let user = document.getElementById("user").value;

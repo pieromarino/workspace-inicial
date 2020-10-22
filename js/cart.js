@@ -24,7 +24,6 @@ const masterBody = document.getElementById("masterBody")
 const paypalBody = document.getElementById("paypalBody")
 
 
-
 //funcion para mostrar el total
 const showTotal = () => {
     let costs = Array.from(document.getElementsByClassName("subt"));
@@ -99,6 +98,7 @@ btnDiv.append(btn)
 
 const checkOutBtn = document.createElement("button")
 checkOutBtn.type = "button"
+checkOutBtn.id = "paymentMethods"
 checkOutBtn.className = "modal-button"
 checkOutBtn.innerHTML = "Métodos de pago"
 checkOutBtn.setAttribute("data-toggle", "modal")
@@ -192,6 +192,22 @@ const removeItem = (e) => {
     }
 }
 
+
+const checkInputs = () => {
+    const paymentMethods = document.getElementById("paymentMethods")
+    let subtotalArr = Array.from(document.getElementsByClassName("subtValue"))
+    let valuesArr = subtotalArr.map((x) => { return x.value})
+    // console.log(valuesArr)
+    if(valuesArr.includes("0")){
+        paymentMethods.classList.add("disableBtn")
+    } else {
+        paymentMethods.classList.remove("disableBtn")
+    }
+
+}
+
+
+
 document.addEventListener("DOMContentLoaded", (e) => {
 
     fetch(CART_LINK)
@@ -218,10 +234,11 @@ document.addEventListener("DOMContentLoaded", (e) => {
                 //creo el input que va a llevar una cantidad editable
                 const input = document.createElement("input");
                 input.type = "number";
-                input.className = "form-control";
+                input.className = "form-control subtValue";
                 input.value = article.count;
+                input.min = 0;
                 input.id = `row-${index}`;
-                input.onchange = () => { showSubtotal(index) };
+                input.onchange = () => { showSubtotal(index); checkInputs() };
 
                 //assigno valores/propiedades para cada uno de los elementos
                 row.id = `wholeRow-${index}`

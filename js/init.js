@@ -47,7 +47,6 @@ var getJSONData = function (url) {
 };
 
 const logOut = () => {
-  console.log("removing username...");
   localStorage.removeItem("username");
 };
 

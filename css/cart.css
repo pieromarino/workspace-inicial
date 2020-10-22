@@ -1,102 +1,110 @@
 .bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 @media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-    }
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
 }
 
 .currency-button {
-    border: 1px solid #dd2f56;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 5px;
-    color: #dd2f56;
-    transition: 0.15s ease-in;
+  border: 1px solid #dd2f56;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px;
+  color: #dd2f56;
+  transition: 0.15s ease-in;
 }
 
 .currency-button:hover {
-    background-color: #dd2f56;
-    color: white
+  background-color: #dd2f56;
+  color: white;
 }
 
 .currency-button:focus {
-    outline: none;
+  outline: none;
 }
 
 .modal-button {
-    border: 1px solid #007bff;
-    border-radius: 5px;
-    padding: 10px 40px;
-    margin: 5px 25px 0 0;
-    color: #007bff;
-    transition: 0.15s ease-in;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+  padding: 10px 40px;
+  margin: 5px 25px 0 0;
+  color: #007bff;
+  transition: 0.15s ease-in;
 }
 
 .modal-button:hover {
-    background-color: #007bff;
-    color: white
+  background-color: #007bff;
+  color: white;
 }
 
 .modal-button:focus {
-    outline: none;
+  outline: none;
+}
+
+.disableBtn {
+  cursor: not-allowed;
+  pointer-events: none;
+  color: #c0c0c0;
+  background-color: #ffffff;
+  border: 1px solid #c0c0c0;
 }
 
 #modal-btn-div {
-    float: right;
-    display: flex;
-    justify-content: center;
+  float: right;
+  display: flex;
+  justify-content: center;
 }
 
 #modal-btn-div button {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .modal-img {
-    height: 100px;
+  height: 100px;
 }
 
 .paymentOption input {
-    padding: 15px;
-    height: 100px;
-    margin: 15px;
+  padding: 15px;
+  height: 100px;
+  margin: 15px;
 }
 
 .paymentOption:hover {
-    border: 1px solid #007bff;
-    border-radius: 10px;
-    cursor: pointer;
+  border: 1px solid #007bff;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 .modal-body {
-    width: 300px;
+  width: 300px;
 }
 
 .paymentModal {
-    display: flex;
+  display: flex;
 }
 
 .paymentForm {
-    text-align: center;
+  text-align: center;
 }
 
 .paymentForm label {
-    padding: 25px;
-    border: 1px solid transparent;
-    border-radius: 10px;
+  padding: 25px;
+  border: 1px solid transparent;
+  border-radius: 10px;
 }
 
 .paymentForm .paymentLabel:hover {
-    border: 1px solid grey;
+  border: 1px solid grey;
 }
 
 label img {
-    height: 100px;
+  height: 100px;
 }

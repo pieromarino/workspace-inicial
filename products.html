@@ -55,7 +55,7 @@
             />Menor Precio
           </label>
           <label class="btn btn-light" onclick="sortByPriceDesc()">
-            <input type="radio" name="options" autocomplete="off" />Mayor Precio
+            <input type="radio" name="options" autocomplete="off"  />Mayor Precio
           </label>
           <label class="btn btn-light" onclick="sortBySoldCount()">
             <input type="radio" name="options" autocomplete="off" />
@@ -76,6 +76,7 @@
                   type="number"
                   placeholder="min."
                   id="rangePriceMin"
+                  min="0"
                 />
               </div>
               <div class="col">
@@ -84,6 +85,7 @@
                   type="number"
                   placeholder="máx."
                   id="rangePriceMax"
+                  min="0"
                 />
               </div>
               <div class="col-3 p-0">
