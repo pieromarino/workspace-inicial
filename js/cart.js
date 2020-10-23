@@ -103,6 +103,7 @@ checkOutBtn.className = "modal-button"
 checkOutBtn.innerHTML = "Métodos de pago"
 checkOutBtn.setAttribute("data-toggle", "modal")
 checkOutBtn.setAttribute("data-target", "#paymentModal")
+
 modalDiv.append(checkOutBtn)
 
 const makePayment = () => {
@@ -197,8 +198,9 @@ const checkInputs = () => {
     const paymentMethods = document.getElementById("paymentMethods")
     let subtotalArr = Array.from(document.getElementsByClassName("subtValue"))
     let valuesArr = subtotalArr.map((x) => { return x.value})
-    // console.log(valuesArr)
-    if(valuesArr.includes("0")){
+    let sumOfValues = valuesArr.reduce((a,b) => Number(a) + Number(b))
+
+    if(sumOfValues == 0){
         paymentMethods.classList.add("disableBtn")
     } else {
         paymentMethods.classList.remove("disableBtn")
