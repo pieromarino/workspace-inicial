@@ -99,7 +99,7 @@ btnDiv.append(btn)
 const checkOutBtn = document.createElement("button")
 checkOutBtn.type = "button"
 checkOutBtn.id = "paymentMethods"
-checkOutBtn.className = "modal-button"
+checkOutBtn.className = "modal-button mb-5"
 checkOutBtn.innerHTML = "Métodos de pago"
 checkOutBtn.setAttribute("data-toggle", "modal")
 checkOutBtn.setAttribute("data-target", "#paymentModal")
@@ -130,6 +130,7 @@ payBtn.innerHTML = "Pagar"
 payBtn.onclick = makePayment
 
 
+//diferentes funciones para appendar el boton de pagar
 
 const appendBtnVisa = () => {
     visaBody.append(payBtn)
@@ -148,6 +149,7 @@ accordionVisa.onclick = appendBtnVisa
 accordionMaster.onclick = appendBtnMaster
 accordionPaypal.onclick = appendBtnPaypal
 
+//funcion para obtener el value de los radios
 
 const getValue = () => {
     for (i = 0; i < radio.length; i++) {
@@ -157,11 +159,15 @@ const getValue = () => {
     }
 }
 
+//funcion para mostrar el valor del shipping
+
 const showShipCost = () => {
+    //consigo el valor del radio seleccionadio
     let value = getValue()
     let arr = subtotal.innerHTML.split(" ")
     let number = Number(arr[0])
     let curr = arr[1]
+    //multiplico el valor por el subtotal, y llamo a la funcion toFixed para que no sean mas de dos numeros luego del punto
     let result = Number((number * value).toFixed(2));
     shipmentCost.innerHTML = `${result} ${curr}`
     total.innerHTML = `${number + result} ${curr}`
@@ -169,15 +175,18 @@ const showShipCost = () => {
 
 form.onchange = showShipCost;
 
+//funcion para removerObjecto (en funcion de un evento)
+
 const removeItem = (e) => {
+    // accedo a el id del objeto seleccionado mediante un click 
     let string = String(e.target.id)
     let arr = string.split("-")
+    // accedo al numero de index de el id
     let index = arr[1]
-    let curr = total.innerHTML.split(" ")[1]
+    // utilizando el numero de index accedo al elemento completo dentro de la tabla, y lo elimino
     let idToDelete = `wholeRow-${index}`
     document.getElementById(idToDelete).remove()
     let cartItems = Array.from(document.getElementsByClassName("cartRow"))
-    console.log(cartItems)
     if (cartItems.length == 0) {
         document.getElementById("cartBody").style.display = "none"
         document.getElementsByClassName("container p-5")[0].innerHTML = `
@@ -193,6 +202,7 @@ const removeItem = (e) => {
     }
 }
 
+// funcion para validar los inputs, si todos de ellos son 0 se desactiva el boton para acceder a los metodos de pago
 
 const checkInputs = () => {
     const paymentMethods = document.getElementById("paymentMethods")
@@ -212,7 +222,7 @@ const checkInputs = () => {
 
 document.addEventListener("DOMContentLoaded", (e) => {
 
-    fetch(CART_LINK)
+    fetch("https://raw.githubusercontent.com/Marcos170393/products-cart-info/main/json")
         .then((res) => res.json())
         .then((obj) => {
             const articles = obj.articles;

@@ -1,3 +1,6 @@
+const productsRow = document.getElementById("productsRow")
+
+
 let list = [];
 let filteredList = list;
 
@@ -37,7 +40,6 @@ function showProductsList() {
   if (!filteredList.length) {
     filteredList = list;
   }
-  console.log(filteredList);
   let htmlContentToAppend = "";
   document.getElementsByClassName(
     "container p-5"
@@ -47,62 +49,35 @@ function showProductsList() {
     if (filteredList) {
       htmlContentToAppend +=
         `
-      <a href="product-info.html" class="list-group-item list-group-item-action">
-          <div class="row">
-              <div class="col-3">
-                  <img src="` +
-        category.imgSrc +
-        `" alt="` +
-        category.description +
-        `" class="img-thumbnail">
-              </div>
-              <div class="col">
-                  <div class="d-flex w-100 justify-content-between">
-                      <h4 class="mb-1">` +
-        category.name +
-        `</h4>
-                      <small class="text-muted">` +
-        category.cost +
-        ` dolares</small>
-        
-                  </div>
-                  <p class="mb-1">` +
-        category.description +
-        `</p>
-        <p><strong>` +
-        category.soldCount +
-        ` vendidos </strong></p>
-              </div>
+        <div class="card m-4">
+        <div class="card" style="width: 330px;">
+          <img class="card-img-top" src="${category.imgSrc}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">${category.name} <b>$${category.cost}</b></h5>
+            <p class="card-text">${category.description}</p>
+            <p class="footer">${category.soldCount} vendidos</p>
+            <a href="product-info.html" class="btn btn-primary">Ir al producto</a>
           </div>
-      </a>
-      `;
+        </div>
+        </div>
+        `;
     }
   }
 
-  document.getElementsByClassName(
-    "container p-5"
-  )[0].innerHTML = htmlContentToAppend;
-}
+  productsRow.innerHTML = htmlContentToAppend;
 
-// cambia las fotos del celerio y peugeot que estan mal
-function changePics() {
-  let celerio = document.getElementsByClassName("img-thumbnail")[2];
-  let peugeot = document.getElementsByClassName("img-thumbnail")[3];
-
-  celerio.src = "img/prod4.jpg";
-  peugeot.src = "img/prod3.jpg";
 }
 
 document.addEventListener("DOMContentLoaded", function (e) {
   document.getElementsByClassName("alert alert-danger")[0].style.display =
     "none";
+  document.getElementsByClassName("container p-5")[0].style.display = "none";
 
   fetch(PRODUCTS_URL)
     .then(function (response) {
       return response.json();
     })
     .then(function (myJson) {
-      console.log(myJson);
       list = myJson;
       showProductsList();
     });
