@@ -19,10 +19,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
     if (!user || !password) {
       alert("Ingrese los datos correctamente");
     } else {
-      if (typeof Storage !== "undefined") {
-        localStorage.setItem("username", user);
+      if (user == localStorage.getItem("userName") || user == localStorage.getItem("email")) {
+        localStorage.setItem("username", user)
+        window.location.href = "index.html"
+      } else {
+        alert("Usuario incorrecto")
       }
-      window.location.href = "index.html";
     }
   };
 
