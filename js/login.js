@@ -9,6 +9,9 @@ const logAsGuest = () => {
   window.location.href = "index.html"
 }
 
+let userObj = JSON.parse(localStorage.getItem("userObj"))
+console.log(userObj)
+
 logAsGuestBtn.onclick = logAsGuest
 
 document.addEventListener("DOMContentLoaded", function (e) {
@@ -18,13 +21,15 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     if (!user || !password) {
       alert("Ingrese los datos correctamente");
-    } else {
-      if (user == localStorage.getItem("userName") || user == localStorage.getItem("email")) {
+    } else if (userObj){
+      if (user == userObj.userName || user == userObj.email) {
         localStorage.setItem("username", user)
         window.location.href = "index.html"
       } else {
-        alert("Usuario incorrecto")
+        alert("Datos incorrectos")
       }
+    } else if(!userObj){
+      alert("No hay usuarios registrados")
     }
   };
 

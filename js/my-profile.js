@@ -11,6 +11,9 @@ const password = document.getElementById('password')
 const editBtn = document.getElementById('editBtn')
 const confirmDiv = document.getElementById('confirmDiv')
 const cancelDiv = document.getElementById('cancelDiv')
+let userObj = JSON.parse(localStorage.getItem("userObj"))
+console.log(userObj)
+
 let isEditable = false;
 
 const editValues = () => {
@@ -53,14 +56,19 @@ const confirm = () => {
     newUserName = document.getElementById('userName').value
     newPassword = document.getElementById('password').value
 
-    localStorage.setItem("name", newName)
-    localStorage.setItem("lastName", newLastName)
-    localStorage.setItem("email", newEmail)
-    localStorage.setItem("bday", newBday)
-    localStorage.setItem("username",newUserName)
-    localStorage.setItem("userName", newUserName)
-    localStorage.setItem("password", newPassword)
-    
+    let obj = {
+        name: newName,
+        lastName: newLastName,
+        email: newEmail,
+        bday: newBday,
+        userName: newUserName,
+        password: newPassword,
+    }
+
+    let objString = JSON.stringify(obj)
+    localStorage.setItem("userObj", objString)
+    localStorage.setItem("username", newUserName)
+
     alert('Tus cambios han sido guardados')
 
     location.reload();
@@ -78,13 +86,8 @@ confirmBtn.className = "btn btn-outline-success mt-4 p-3"
 confirmBtn.innerHTML = "Confirmar"
 confirmBtn.onclick = confirm
 
+
 document.addEventListener("DOMContentLoaded", function (e) {
-    document.getElementById('name').value = localStorage.getItem('name')
-    document.getElementById('lastName').value = localStorage.getItem('lastName')
-    document.getElementById('email').value = localStorage.getItem('email')
-    document.getElementById('birthday').value = localStorage.getItem('bday')
-    document.getElementById('userName').value = localStorage.getItem('userName')
-    document.getElementById('password').value = localStorage.getItem('password')
 
     name.setAttribute("disabled","")
     lastName.setAttribute("disabled","")
@@ -92,6 +95,17 @@ document.addEventListener("DOMContentLoaded", function (e) {
     bday.setAttribute("disabled","")
     userName.setAttribute("disabled","")
     password.setAttribute("disabled","")
+
+    if(userObj){
+    document.getElementById('name').value = userObj.name
+    document.getElementById('lastName').value = userObj.lastName
+    document.getElementById('email').value = userObj.email
+    document.getElementById('birthday').value = userObj.bday
+    document.getElementById('userName').value = userObj.userName
+    document.getElementById('password').value = userObj.password
+    } else {
+        editBtn.style.display = "none"
+    }
 
     editBtn.onclick = editValues
 

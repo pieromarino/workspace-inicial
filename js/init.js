@@ -54,11 +54,6 @@ const logOut = () => {
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
-  let mycart = document.getElementsByClassName(
-    "py-2 d-none d-md-inline-block"
-  )[4];
-  mycart.remove();
-
   let contentToAppend = `<div class="dropdown" id="userDropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     ${localStorage.getItem("username")}
@@ -73,12 +68,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
   let userino = localStorage.getItem("username");
   let userinoID = document.getElementById("userDropdown");
 
-  const isLogin = window.location.pathname.includes("login");
-  if (!isLogin) {
-    if (userino === null || userinoID === "null") {
+
+    if (userino === null) {
       document.getElementsByClassName(
         "container d-flex flex-column flex-md-row justify-content-between"
-      )[0].innerHTML += `<a class="py-2 d-none d-md-inline-block" href="login.html">Iniciar sesion</a>`;
+      )[0].innerHTML += `<a class="py-2 d-none d-md-inline-block" href="login.html" id="loginBtn">Iniciar sesion</a>`;
     } else {
       document.getElementsByClassName(
         "container d-flex flex-column flex-md-row justify-content-between"
@@ -88,5 +82,5 @@ document.addEventListener("DOMContentLoaded", function (e) {
       logOut();
       window.location.href = "login.html";
     };
-  }
+  
 });
