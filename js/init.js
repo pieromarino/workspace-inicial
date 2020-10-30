@@ -48,6 +48,7 @@ var getJSONData = function (url) {
 
 const logOut = () => {
   localStorage.removeItem("username");
+  localStorage.setItem("isLoggedIn", "false")
 };
 
 //Función que se ejecuta una vez que se haya lanzado el evento de

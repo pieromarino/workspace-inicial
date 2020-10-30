@@ -12,6 +12,8 @@ const editBtn = document.getElementById('editBtn')
 const confirmDiv = document.getElementById('confirmDiv')
 const cancelDiv = document.getElementById('cancelDiv')
 let userObj = JSON.parse(localStorage.getItem("userObj"))
+let isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn"))
+
 console.log(userObj)
 
 let isEditable = false;
@@ -96,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     userName.setAttribute("disabled","")
     password.setAttribute("disabled","")
 
-    if(userObj){
+    if(isLoggedIn){
     document.getElementById('name').value = userObj.name
     document.getElementById('lastName').value = userObj.lastName
     document.getElementById('email').value = userObj.email
@@ -106,7 +108,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
     } else {
         editBtn.style.display = "none"
     }
-
     editBtn.onclick = editValues
 
 });

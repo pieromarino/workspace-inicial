@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     } else if (userObj){
       if (user == userObj.userName || user == userObj.email) {
         localStorage.setItem("username", user)
+        localStorage.setItem("isLoggedIn", "true")
         window.location.href = "index.html"
       } else {
         alert("Datos incorrectos")
