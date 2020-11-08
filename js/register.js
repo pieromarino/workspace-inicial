@@ -1,4 +1,18 @@
 const button = document.getElementById('button')
+const fileInput = document.getElementById('customFile')
+const profilePicDataUrl = localStorage.getItem("profilePic")
+const reader = new FileReader();
+
+fileInput.addEventListener("change", function () {
+    
+    reader.addEventListener("load" , () => {
+        let currentPic = reader.result
+        document.getElementById('profileImg').src = currentPic;
+    })
+
+    reader.readAsDataURL(this.files[0])
+    
+})
 
 const saveValues = () => {
     const inputArr = Array.from(document.getElementsByTagName('input'))
@@ -9,6 +23,8 @@ const saveValues = () => {
     const bday = document.getElementById('bday').value
     const userName = document.getElementById('userName').value
     const password = document.getElementById('password').value
+
+    
 
     let obj = {
         name: name,
@@ -25,10 +41,13 @@ const saveValues = () => {
         alert('Ingrese TODOS los datos')
     } else {
     localStorage.setItem("userObj", objString)
+    localStorage.setItem("profilePic", reader.result)
     console.log(localStorage.getItem("userObj"))
     window.location.href = "login.html"
     }
 }
+
+
 
 document.addEventListener("DOMContentLoaded", (e) => {
 

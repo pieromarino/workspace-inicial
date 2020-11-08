@@ -11,6 +11,9 @@ const password = document.getElementById('password')
 const editBtn = document.getElementById('editBtn')
 const confirmDiv = document.getElementById('confirmDiv')
 const cancelDiv = document.getElementById('cancelDiv')
+const fileUpload = document.getElementById('fileUpload')
+const profilePic = localStorage.getItem("profilePic")
+const reader = new FileReader();
 let userObj = JSON.parse(localStorage.getItem("userObj"))
 let isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn"))
 
@@ -28,7 +31,7 @@ const editValues = () => {
         bday.removeAttribute("disabled")
         userName.removeAttribute("disabled")
         password.removeAttribute("disabled")
-
+        fileUpload.className = "d-block"
         editBtn.setAttribute("disabled","")
 
         cancelDiv.append(cancelBtn)
@@ -50,6 +53,15 @@ const editValues = () => {
 
 }
 
+fileUpload.addEventListener("change", function() {
+    reader.addEventListener("load" , () => {
+        let currentPic = reader.result;
+        document.getElementById('my-profile-img').src = currentPic
+    })
+    reader.readAsDataURL(this.files[0])
+})
+
+
 const confirm = () => {
     newName = document.getElementById('name').value
     newLastName = document.getElementById('lastName').value
@@ -70,6 +82,7 @@ const confirm = () => {
     let objString = JSON.stringify(obj)
     localStorage.setItem("userObj", objString)
     localStorage.setItem("username", newUserName)
+    localStorage.setItem("profilePic", reader.result)
 
     alert('Tus cambios han sido guardados')
 
@@ -80,7 +93,7 @@ const cancelBtn = document.createElement("button")
 cancelBtn.type = "button"
 cancelBtn.className = "btn btn-outline-danger mt-4 p-3"
 cancelBtn.innerHTML = "Cancelar"
-cancelBtn.onclick = editValues
+cancelBtn.onclick = () => {location.reload()}
 
 const confirmBtn = document.createElement("button")
 confirmBtn.type = "button"
@@ -105,6 +118,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
     document.getElementById('birthday').value = userObj.bday
     document.getElementById('userName').value = userObj.userName
     document.getElementById('password').value = userObj.password
+    document.getElementById('my-profile-img').src = profilePic
+
     } else {
         editBtn.style.display = "none"
     }

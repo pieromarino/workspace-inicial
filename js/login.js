@@ -10,7 +10,6 @@ const logAsGuest = () => {
 }
 
 let userObj = JSON.parse(localStorage.getItem("userObj"))
-console.log(userObj)
 
 logAsGuestBtn.onclick = logAsGuest
 
