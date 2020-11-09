@@ -69,6 +69,7 @@ const confirm = () => {
     newBday = document.getElementById('birthday').value
     newUserName = document.getElementById('userName').value
     newPassword = document.getElementById('password').value
+    const profilePicAsDataUrl = reader.result;
 
     let obj = {
         name: newName,
@@ -82,7 +83,8 @@ const confirm = () => {
     let objString = JSON.stringify(obj)
     localStorage.setItem("userObj", objString)
     localStorage.setItem("username", newUserName)
-    localStorage.setItem("profilePic", reader.result)
+    
+    profilePicAsDataUrl ? localStorage.setItem('profilePic', profilePicAsDataUrl) : console.log('there is not a pic')
 
     alert('Tus cambios han sido guardados')
 
